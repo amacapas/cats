@@ -7,17 +7,18 @@ import logo from "../logo.svg";
 
 const Header = (props) => {
   const [catBreed, setCatBreed] = useState("Select Breed");
-  const { breeds } = props;
+  const { breeds, handleClick } = props;
 
   const onClick = (e) => {
     setCatBreed(e.name);
+    handleClick(e.id);
   };
 
   return (
     <header>
       <Navbar variant="light" bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               alt="Cat Browser"
               src={logo}
