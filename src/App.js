@@ -1,10 +1,24 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import Home from "./components/Home";
+import Details from "./components/Details";
+import { CatProvider } from "./contexts/CatContext";
+import { PageProvider } from "./contexts/PageContext";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-axios.defaults.headers.common["x-api-key"] = process.env.REACT_APP_API_KEY;
+const App = () => {
+  return (
+    <PageProvider>
+      <CatProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:catId" element={<Details />} />
+          </Routes>
+        </BrowserRouter>
+      </CatProvider>
+    </PageProvider>
+  );
+};
 
-const App = () => <Home />;
 export default App;

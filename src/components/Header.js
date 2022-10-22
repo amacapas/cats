@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useCatContext } from "../contexts/CatContext";
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../logo.svg";
 
-const Header = (props) => {
-  const [catBreed, setCatBreed] = useState("Select Breed");
-  const { breeds, handleClick } = props;
+const Header = () => {
+  const { breeds, catBreed, setCatBreed, selectCatBreed } = useCatContext();
 
-  const onClick = (e) => {
-    setCatBreed(e.name);
-    handleClick(e.id);
+  const onClick = (cat) => {
+    setCatBreed(cat.name);
+    selectCatBreed(cat.id);
   };
 
   return (
@@ -36,8 +36,8 @@ const Header = (props) => {
                 title={catBreed}
                 menuVariant="light"
               >
-                {breeds.map((cat, i) => (
-                  <NavDropdown.Item key={i} onClick={() => onClick(cat)}>
+                {breeds.map((cat, idx) => (
+                  <NavDropdown.Item key={idx} onClick={() => onClick(cat)}>
                     {cat.name}
                   </NavDropdown.Item>
                 ))}
