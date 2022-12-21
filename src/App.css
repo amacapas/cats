@@ -9,3 +9,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+
+.list {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+}
+
+.list-item:not(:last-child) {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.list-item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+a.list-item {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.list-item {
+  display: block;
+  padding: 0.5em 1em;
+}
+
+.control {
+  box-sizing: border-box;
+  clear: both;
+  font-size: 1rem;
+  position: relative;
+  text-align: left;
+}
+
+.wrapper {
+  width: 300px;
+}
